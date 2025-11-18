@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Menu, ShoppingBag, Search, User } from 'lucide-react'
 
 function NavLink({ children }) {
@@ -11,11 +11,18 @@ function NavLink({ children }) {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mt-6 rounded-2xl border border-amber-50/10 bg-emerald-900/30 backdrop-blur-xl shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]">
+        <div className={`mt-6 rounded-2xl border border-amber-50/10 backdrop-blur-xl shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)] ${isScrolled ? 'bg-emerald-900/60' : 'bg-emerald-900/30'}`}>
           <div className="flex items-center justify-between px-4 py-3 md:px-6">
             <div className="flex items-center gap-3">
               <div className="h-9 w-9 rounded-full bg-gradient-to-br from-amber-300/70 to-amber-200/20 shadow-inner ring-1 ring-amber-200/40 flex items-center justify-center">
@@ -25,11 +32,9 @@ export default function Navbar() {
             </div>
 
             <nav className="hidden md:flex items-center gap-8">
-              <NavLink>New</NavLink>
               <NavLink>Women</NavLink>
               <NavLink>Men</NavLink>
-              <NavLink>Accessories</NavLink>
-              <NavLink>Stories</NavLink>
+              <NavLink>Kids</NavLink>
             </nav>
 
             <div className="hidden md:flex items-center gap-4 text-amber-100/80">
@@ -50,9 +55,9 @@ export default function Navbar() {
           </div>
 
           {open && (
-            <div className="md:hidden border-t border-amber-50/10 px-4 py-3 space-y-3 bg-emerald-900/30">
-              <div className="grid grid-cols-2 gap-3">
-                {['New','Women','Men','Accessories','Stories'].map(i => (
+            <div className="md:hidden border-t border-amber-50/10 px-4 py-3 space-y-3 bg-emerald-900/60">
+              <div className="grid grid-cols-3 gap-3">
+                {['Women','Men','Kids'].map(i => (
                   <a key={i} href="#" className="rounded-lg bg-emerald-800/40 px-4 py-3 text-amber-100/80 hover:bg-emerald-800/60">
                     {i}
                   </a>
