@@ -29,34 +29,34 @@ const items = [
 
 function Card({ item }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10">
+    <div className="group relative overflow-hidden rounded-2xl bg-emerald-900/30 ring-1 ring-amber-50/10">
       <div className="aspect-[4/5] overflow-hidden">
         <img src={item.image} alt={item.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
       </div>
       <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.3em] text-white/70">{item.tag}</p>
-            <h3 className="text-white text-lg font-medium">{item.title}</h3>
+            <p className="text-[11px] uppercase tracking-[0.3em] text-amber-100/80">{item.tag}</p>
+            <h3 className="text-amber-50 text-lg font-medium">{item.title}</h3>
           </div>
-          <span className="rounded-full bg-white/90 px-3 py-1 text-slate-900 text-sm">{item.price}</span>
+          <span className="rounded-full bg-amber-300 px-3 py-1 text-emerald-950 text-sm">{item.price}</span>
         </div>
       </div>
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent" />
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-t from-emerald-950/80 via-emerald-900/30 to-transparent" />
     </div>
   )
 }
 
 export default function Collection() {
   return (
-    <section id="collection" className="relative z-10 py-24 md:py-32 bg-slate-950">
+    <section id="collection" className="relative z-10 py-24 md:py-32 bg-emerald-950">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <h2 className="text-3xl md:text-4xl text-white font-light">Curated Essentials</h2>
-            <p className="text-white/70 mt-2 max-w-xl">Each piece is constructed with elevated craftsmanship and considered details for a wardrobe that endures.</p>
+            <h2 className="text-3xl md:text-4xl text-amber-50 font-light">Curated Essentials</h2>
+            <p className="text-amber-100/80 mt-2 max-w-xl">Each piece is constructed with elevated craftsmanship and considered details for a wardrobe that endures.</p>
           </div>
-          <button className="hidden md:inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 text-white/90 ring-1 ring-inset ring-white/20 hover:bg-white/15">
+          <button className="hidden md:inline-flex items-center gap-2 rounded-full bg-emerald-900/40 px-5 py-2 text-amber-100/90 ring-1 ring-inset ring-amber-100/20 hover:bg-emerald-900/60">
             View all
           </button>
         </div>
